@@ -1,4 +1,4 @@
-<h1 align="center">Automação de Busca de Preços na Web</h1>
+<h1 align="center">Web Price Search Automation</h1>
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/gsoaresdz/automacao-web-busca-de-precos?color=56BEB8">
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/gsoaresdz/automacao-web-busca-de-precos?color=56BEB8">
@@ -6,132 +6,127 @@
   <!--<img alt="License" src="https://img.shields.io/github/license/gsoaresdz/automacao-web-busca-de-precos?color=56BEB8">-->
 </p>
 <p align="center">
-  <a href="#dart-sobre">Sobre</a> &#xa0; | &#xa0; 
+  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
   <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
-  <a href="#rocket-tecnologias">Tecnologias</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requerimentos">Requerimentos</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-execução">Execução</a> &#xa0; | &#xa0;
-  <a href="#memo-licença">Licença</a> &#xa0; | &#xa0;
-  <a href="https://github.com/gsoaresdz" target="_blank">Autor</a>
+  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-execution">Execution</a> &#xa0; | &#xa0;
+  <a href="#memo-license">License</a> &#xa0; | &#xa0;
+  <a href="https://github.com/gsoaresdz" target="_blank">Author</a>
 </p>
 <br>
 
-## **:dart: Sobre**
+## **:dart: About**
 
-Este projeto consiste em um script Python que automatiza a busca de preços na web e armazena os resultados em um arquivo Excel. O script utiliza as seguintes bibliotecas:
+This project consists of a Python script that automates the process of searching for prices on the web and storing the results in an Excel file. The script uses the following libraries:
 
-- **pandas:** para manipulação de dados.
-- **selenium:** para controlar o navegador e realizar buscas na web.
-- **openpyxl:** para trabalhar com arquivos Excel.
+- **pandas:** for data manipulation.
+- **selenium:** to control the browser and perform web searches.
+- **openpyxl:** to handle Excel files.
 
-## **:memo: IDE e versão do Python**
+## **:memo: IDE and Python Version**
 
-O script foi desenvolvido no Jupyter Notebook com a versão 3.8 do Python.
+The script was developed using Jupyter Notebook with Python version 3.8.
 
-## **:memo: Regra de negócio**
+## **:memo: Business Rules**
 
-O script funciona da seguinte forma:
+The script operates as follows:
 
-1. Importa o arquivo Excel com os produtos a serem pesquisados.
-2. Abre o navegador e realiza buscas nos sites especificados.
-3. Coleta os preços dos produtos e armazena os resultados em um arquivo Excel.
+1. Imports an Excel file containing the products to be searched.
+2. Opens the browser and performs searches on the specified websites.
+3. Collects product prices and stores the results in an Excel file.
 
-## **:memo: Passos executados no código**
+## **:memo: Steps Executed in the Code**
 
-O código é dividido em duas partes principais:
+The code is divided into two main parts:
 
-- Importação de Arquivo Excel
-- Automação de Busca de Preços
+- Importing the Excel File
+- Automating Price Searches
 
-## **:memo: Importação de Arquivo Excel**
+## **:memo: Importing the Excel File**
 
-A primeira parte do código importa o arquivo Excel com os produtos a serem pesquisados. O arquivo deve ter as seguintes colunas:
+The first part of the code imports the Excel file containing the products to be searched. The file should have the following columns:
 
-- **Produto:** nome do produto.
-- **URL:** URL da página de busca do produto.
+- **Product:** the name of the product.
+- **URL:** the URL of the product's search page.
 
-O código utiliza a biblioteca pandas para importar o arquivo Excel. O código a seguir mostra como importar o arquivo:
+The code uses the pandas library to import the Excel file. The following code shows how to import the file:
 
 ```python
-python
-produtos_df = pd.read_excel('buscas.xlsx')
+products_df = pd.read_excel('searches.xlsx')
 ```
 
 ## **:sparkles: Features**
 
-A segunda parte do código automatiza a busca de preços para os produtos do arquivo Excel. O código funciona da seguinte forma:
+The second part of the code automates price searches for the products listed in the Excel file. The code operates as follows:
 
-:heavy_check_mark: **Feature 1**: Abre o navegador e acessa as URLs especificadas.
+:heavy_check_mark: **Feature 1**: Opens the browser and accesses the specified URLs.
 
-:heavy_check_mark: **Feature 2**: Coleta os preços dos produtos nas páginas acessadas.
+:heavy_check_mark: **Feature 2**: Collects product prices from the accessed pages.
 
-:heavy_check_mark: **Feature 3**: Armazena os resultados em um arquivo Excel.
+:heavy_check_mark: **Feature 3**: Stores the results in an Excel file.
 
-O código a seguir mostra como realizar uma busca e coletar o preço:
+The following code shows how to perform a search and collect the price:
 
 ```python
-python
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pandas as pd
 
-# Configurar o webdriver
-navegador = webdriver.Chrome()
+# Configure the webdriver
+browser = webdriver.Chrome()
 
-# Loop para acessar cada URL e coletar os preços
-for i in range(len(produtos_df)):
-    produto = produtos_df.loc[i, 'Produto']
-    url = produtos_df.loc[i, 'URL']
-    navegador.get(url)
-    preco = navegador.find_element(By.CLASS_NAME, 'price').text  # Exemplo de classe de preço
-    produtos_df.loc[i, 'Preco'] = preco
+# Loop through each URL and collect the prices
+for i in range(len(products_df)):
+    product = products_df.loc[i, 'Product']
+    url = products_df.loc[i, 'URL']
+    browser.get(url)
+    price = browser.find_element(By.CLASS_NAME, 'price').text  # Example of price class
+    products_df.loc[i, 'Price'] = price
 
-# Salvar os resultados em um novo arquivo Excel
-produtos_df.to_excel('Ofertas.xlsx', index=False)
+# Save the results to a new Excel file
+products_df.to_excel('Offers.xlsx', index=False)
 ```
 
-## **:rocket: Tecnologias**
+## **:rocket: Technologies**
 
-As seguintes ferramentas foram usadas neste projeto:
+The following tools were used in this project:
 
 - [Python](https://www.python.org/)
 - [Jupyter](https://jupyter.org/)
 - [Selenium](https://www.selenium.dev/)
-- Pandas
+- [Pandas](https://pandas.pydata.org/)
 - [Openpyxl](https://openpyxl.readthedocs.io/)
 
-## **:white_check_mark: Requerimentos**
+## **:white_check_mark: Requirements**
 
-Antes de iniciar :checkered_flag:, você precisa ter [Git](https://git-scm.com/) e [Python](https://www.python.org/) instalados.
+Before starting :checkered_flag:, ensure you have [Git](https://git-scm.com/) and [Python](https://www.python.org/) installed.
 
-## **:checkered_flag: Execução**
+## **:checkered_flag: Execution**
 
 ```bash
-bash
-# Clone do projeto
+# Clone the project
 $ git clone https://github.com/gsoaresdz/automacao-web-busca-de-precos.git
 
-# Acesse o diretório do projeto
+# Navigate to the project directory
 $ cd automacao-web-busca-de-precos
 
-# Instale as dependências
+# Install dependencies
 $ pip install -r requirements.txt
 
-# Execute o script
+# Run the script
 $ jupyter notebook main.ipynb
 ```
 
-## **:memo: Observações**
+## **:memo: Notes**
 
-- O script foi desenvolvido para fins educacionais. Não é recomendado o uso do script para fins comerciais sem autorização dos sites.
-- O script pode ser modificado para atender a diferentes necessidades. Por exemplo, é possível alterar a classe de preço ou incluir novas funcionalidades.
+- This script was developed for educational purposes. It is not recommended to use the script for commercial purposes without authorization from the websites.
+- The script can be modified to meet different needs, such as changing the price class or adding new features.
 
-## **:memo: Licença**
+## **:memo: License**
 
-Este projeto está sob licença do MIT. Para obter mais detalhes, consulte o arquivo [LICENSE](LICENSE).
+This project is under the MIT license. For more details, see the [LICENSE](LICENSE) file.
 
-Feito com :heart: by <a href="https://github.com/gsoaresdz" target="_blank">gsoaresdz</a>
+Made with :heart: by <a href="https://github.com/gsoaresdz" target="_blank">gsoaresdz</a>
 
-&#xa0;
-
-<a href="#top">De volta ao topo</a>
+<a href="#top">Back to top</a>
