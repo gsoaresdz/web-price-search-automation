@@ -1,8 +1,8 @@
 <h1 align="center">Web Price Search Automation</h1>
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/gsoaresdz/automacao-web-busca-de-precos?color=56BEB8">
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/gsoaresdz/automacao-web-busca-de-precos?color=56BEB8">
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/gsoaresdz/automacao-web-busca-de-precos?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/gsoaresdz/web-price-search-automation?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/gsoaresdz/web-price-search-automation?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/gsoaresdz/web-price-search-automation?color=56BEB8">
   <!--<img alt="License" src="https://img.shields.io/github/license/gsoaresdz/automacao-web-busca-de-precos?color=56BEB8">-->
 </p>
 <p align="center">
